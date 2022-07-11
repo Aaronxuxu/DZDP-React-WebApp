@@ -1,0 +1,17 @@
+.city-current {
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  font-size: 0.8rem;
+}
+.city-item {
+  height: 48px;
+  line-height: 48px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-top: 0;
+  border-left: 0;
+}
+.city-item:nth-of-type(3n) {
+  border-right: 0;
+}
