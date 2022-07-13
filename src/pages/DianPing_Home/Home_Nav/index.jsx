@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getCatetory } from "../../../api/axios";
-import { Swiper, Empty, Grid } from "antd-mobile";
+import { Swiper, Empty, Grid, Ellipsis } from "antd-mobile";
 import { QuestionCircleOutline } from "antd-mobile-icons";
 import { connect } from "react-redux";
 import "./index.css";
@@ -49,7 +49,10 @@ function HomeNav(props) {
                       className={"iconfont " + el.icon}
                       style={{ fontSize: "1.6rem" }}
                     ></i>
-                    <div className="nav-list-content">{el.cName}</div>
+                    <Ellipsis
+                      content={el.cName}
+                      className="nav-list-content "
+                    ></Ellipsis>
                   </Link>
                 ))}
               </Grid>

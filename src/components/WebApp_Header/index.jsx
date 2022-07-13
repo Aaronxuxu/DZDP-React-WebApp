@@ -21,7 +21,7 @@ function WebAppHeader(props) {
     <NavBar
       backArrow={
         isHome ? (
-          <div style={{ fontSize: "20px" }}>
+          <div style={{ fontSize: "0.8rem" }}>
             {props.targetCity}
             <DownOutline />
           </div>
@@ -32,7 +32,7 @@ function WebAppHeader(props) {
       onBack={() =>
         isHome ? navigate("/city") : navigate(-1, { replace: true })
       }
-      right={isHome && <UserOutline style={{ fontSize: "24px" }} />}
+      right={isHome && <UserOutline style={{ fontSize: "1.2rem" }} />}
       style={{
         "--height": "50px",
         backgroundColor: "#ff6633",

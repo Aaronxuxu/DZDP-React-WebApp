@@ -1,0 +1,46 @@
+.swiper-indi {
+  position: absolute;
+  bottom: 0.3rem;
+  right: 0.3rem;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 0.2rem 0.4rem;
+  color: #ffffff;
+  border-radius: 0.2rem;
+  user-select: none;
+}
+.tweet-body {
+  padding: 0.8rem 1rem;
+  background-color: #fff;
+}
+.tweet-content {
+  margin: 1rem 0;
+  font-size: 0.8rem;
+}
+.tweet-likes {
+  width: 100%;
+  height: 2rem;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-right: none;
+}
+/* .adm-ellipsis a {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+} */
+
+/* .adm-ellipsis a::before {
+  content: "";
+  position: absolute;
+  height: 1rem;
+  left: 0;
+  right: 0;
+  top: -1rem;
+  background-image: linear-gradient(
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 1)
+  );
+} */

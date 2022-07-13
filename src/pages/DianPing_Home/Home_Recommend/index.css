@@ -1,0 +1,12 @@
+.home-recommend {
+  padding: 0 0.3rem;
+  margin-top: 1rem;
+}
+.recommend-lists {
+  width: 100%;
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
