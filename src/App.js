@@ -29,7 +29,7 @@ function App() {
         <Route path="user/" element={<DianPingUser />}></Route>
         <Route path="good_detail/" element={<DianPingGoodDetail />}></Route>
         <Route path="tweet_detail/" element={<DianPingTweetDetail />}></Route>
-        <Route path="/:city" element={<DianPingSearch />}></Route>
+        <Route path="/:city/" element={<DianPingSearch />}></Route>
         <Route path="home/" element={<DianPingHome />}></Route>
         <Route path="*" element={<DianPing404 />}></Route>
       </Routes>

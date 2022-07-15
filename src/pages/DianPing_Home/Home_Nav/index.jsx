@@ -41,7 +41,12 @@ function HomeNav(props) {
               <Grid columns={5} style={{ padding: "0.3rem 0.3rem" }}>
                 {e.map((el) => (
                   <Link
-                    to={`/${props.targetCity}`}
+                    to={`/${props.targetCity}?cateName=${el.cName}`}
+                    state={{
+                      targetCity: props.targetCity,
+                      cateID: el.id,
+                      cateName: el.cName,
+                    }}
                     key={el.id}
                     className="nav-list"
                   >
