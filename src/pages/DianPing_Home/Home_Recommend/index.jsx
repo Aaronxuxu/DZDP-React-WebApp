@@ -39,7 +39,7 @@ function HomeRecommend() {
         position: "top",
       });
     }
-    const middleLength = Math.floor(list.length / 2);
+    const middleLength = Math.ceil(list.length / 2);
     setTweetList([
       { id: "0", list: list.splice(0, middleLength) },
       { id: "1", list },
@@ -73,11 +73,21 @@ function HomeRecommend() {
                   ></Skeleton>
                 ) : (
                   <Card key={el.id} onClick={() => handleClick(el)}>
-                    <Space direction="vertical">
+                    <Space direction="vertical" style={{ width: "100%" }}>
                       <Image
                         lazy={true}
                         src={el.Images[0].url}
                         width="100%"
+                        fallback={
+                          <Image src="/404" width="100%" height={150} />
+                        }
+                        placeholder={
+                          <Skeleton
+                            animated
+                            style={{ "--height": "150px", "--width": "100%" }}
+                          />
+                        }
+                        style={{ textAlign: "center" }}
                       ></Image>
                       <Ellipsis content={el.title} rows={2}></Ellipsis>
                       <div className="card-footer">
@@ -86,7 +96,7 @@ function HomeRecommend() {
                             <Avatar
                               src={el.userID.avatar}
                               style={{
-                                "--size": "1.5rem",
+                                "--size": "1rem",
                                 "--border-radius": "50%",
                               }}
                             ></Avatar>
@@ -97,7 +107,7 @@ function HomeRecommend() {
                           <Button fill="none" size="mini">
                             <Space>
                               <HeartOutline />
-                              <div>{el.Likes.length}</div>
+                              {el.Likes.length}
                             </Space>
                           </Button>
                         </div>

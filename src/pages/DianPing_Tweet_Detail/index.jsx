@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import WebAppHeader from "../../components/WebApp_Header";
+import TweetDetailCommmends from "./Tweet_Detail_Commends";
 import {
   Swiper,
   Space,
@@ -11,15 +12,19 @@ import {
   AutoCenter,
   Skeleton,
 } from "antd-mobile";
+
 import { HeartOutline } from "antd-mobile-icons";
 import "./index.css";
 function DianPingTweetDetail() {
   const { state } = useLocation();
+
   const [tweetItem, setTweetItem] = useState(state);
 
   return (
     <>
+      {/* 关注事件待写，预览图片事件待写 */}
       <WebAppHeader title="推文详情"></WebAppHeader>
+      {/* 轮播图 */}
       <Swiper
         indicator={(total, current) => (
           <div className="swiper-indi">{`${current + 1} / ${total}`}</div>
@@ -31,17 +36,18 @@ function DianPingTweetDetail() {
               src={e.url}
               lazy={true}
               placeholder={<Skeleton animated={true}></Skeleton>}
-              fallback={<Image src="/404" width={"100%"}></Image>}
+              fallback={""}
             ></Image>
           </Swiper.Item>
         ))}
       </Swiper>
       <div className="tweet-body">
+        {/* 文章作者组件 */}
         <Space style={{ width: "100%" }} justify="between" align="center">
           <Space align="center">
             <Avatar
               src={tweetItem.userID.avatar}
-              style={{ "--border-radius": "50%" }}
+              style={{ "--border-radius": "50%", "--size": "2rem" }}
             ></Avatar>
             <div className="userInfo-info">
               <Space direction="vertical">
@@ -54,6 +60,7 @@ function DianPingTweetDetail() {
             关注
           </Button>
         </Space>
+        {/* 文章主体内容 */}
         <div className="tweet-content">
           <Space direction="vertical">
             <AutoCenter>{tweetItem.title}</AutoCenter>
@@ -65,6 +72,7 @@ function DianPingTweetDetail() {
             />
           </Space>
         </div>
+        {/* 点赞组件 */}
         <Space className="tweet-likes" align="center" justify="start">
           <HeartOutline fontSize={"1rem"}></HeartOutline>
           <Space style={{ "--gap": "-.5rem" }}>
@@ -78,6 +86,8 @@ function DianPingTweetDetail() {
           </Space>
           <span>{tweetItem.Likes.length}人赞</span>
         </Space>
+        {/* 推文评论组件 */}
+        <TweetDetailCommmends comments={tweetItem.comments} />
       </div>
     </>
   );

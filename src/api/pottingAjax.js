@@ -2,11 +2,6 @@ import axios from "axios";
 import { Toast } from "antd-mobile";
 function ajax(url, data = {}, method = "get") {
   return new Promise((resolve, reject) => {
-    axios({
-      url: "",
-      method: "",
-      data: "",
-    });
     let promise;
     if (method === "get") {
       promise = axios.get(url, { params: data });
