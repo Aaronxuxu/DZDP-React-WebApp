@@ -4,3 +4,9 @@
   top: 50%;
   transform: translate(-50%, -50%);
 }
+.demo-App {
+  height: 100%;
+}
+.demo-Body {
+  padding-bottom: 49px;
+}

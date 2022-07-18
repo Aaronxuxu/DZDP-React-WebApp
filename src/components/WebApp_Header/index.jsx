@@ -3,8 +3,11 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { NavBar, SearchBar } from "antd-mobile";
 import { DownOutline, UserOutline } from "antd-mobile-icons";
 import { connect } from "react-redux";
+import RouteLists from "../../config/webAppRouter";
+
 function WebAppHeader(props) {
   const [isHome, setIsHome] = useState(false);
+  const [title, setTitle] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
   const { pathname } = location;
@@ -13,6 +16,8 @@ function WebAppHeader(props) {
     if (pathname === "/" || pathname === "/home") {
       setIsHome(true);
     } else {
+      const url = pathname.split("/").filter((e) => e)[0];
+      setTitle(RouteLists.find((e) => e.path.includes(url)).routeName);
       setIsHome(false);
     }
   }, [pathname]);
@@ -45,7 +50,7 @@ function WebAppHeader(props) {
           style={{ "--background": "#ffffff", "--border-radius": "100px" }}
         />
       ) : (
-        props.title
+        title
       )}
     </NavBar>
   );

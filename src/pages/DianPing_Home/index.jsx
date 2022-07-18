@@ -1,15 +1,13 @@
 import React from "react";
-import WebAppHeader from "../../components/WebApp_Header";
 import HomeNav from "./Home_Nav";
 import HomeRecommend from "./Home_Recommend";
-
+import "./index.css";
 function DianPingHome() {
   return (
-    <>
-      <WebAppHeader />
+    <div className="webApp-Home">
       <HomeNav />
       <HomeRecommend />
-    </>
+    </div>
   );
 }
 export default DianPingHome;

@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import WebAppHeader from "../../components/WebApp_Header";
 import TweetDetailCommmends from "./Tweet_Detail_Commends";
 import {
   Swiper,
@@ -11,19 +10,23 @@ import {
   Ellipsis,
   AutoCenter,
   Skeleton,
+  SpinLoading,
 } from "antd-mobile";
 
 import { HeartOutline } from "antd-mobile-icons";
 import "./index.css";
+
 function DianPingTweetDetail() {
   const { state } = useLocation();
 
-  const [tweetItem, setTweetItem] = useState(state);
+  const [tweetItem, setTweetItem] = useState({});
 
-  return (
+  useEffect(() => {
+    setTweetItem(state);
+  }, [state]);
+
+  return Object.keys(tweetItem).length > 0 ? (
     <>
-      {/* 关注事件待写，预览图片事件待写 */}
-      <WebAppHeader title="推文详情"></WebAppHeader>
       {/* 轮播图 */}
       <Swiper
         indicator={(total, current) => (
@@ -90,6 +93,14 @@ function DianPingTweetDetail() {
         <TweetDetailCommmends comments={tweetItem.comments} />
       </div>
     </>
+  ) : (
+    <SpinLoading
+      className="route-spinloading"
+      color="primary"
+      style={{
+        "--size": "32px",
+      }}
+    />
   );
 }
 export default DianPingTweetDetail;
