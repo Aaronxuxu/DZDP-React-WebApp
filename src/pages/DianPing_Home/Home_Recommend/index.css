@@ -5,6 +5,14 @@
 .recommend-lists {
   width: 100%;
 }
+.recommend-loading {
+  display: flex;
+  height: 25rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+}
 .card-footer {
   display: flex;
   justify-content: space-between;

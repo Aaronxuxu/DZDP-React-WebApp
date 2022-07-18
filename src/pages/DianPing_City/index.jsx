@@ -47,7 +47,6 @@ function DianPingCity(props) {
 
   return (
     <>
-      <WebAppHeader title={"城市选择"} />
       <div className="city-current">{targetCity}</div>
       <Divider></Divider>
       {cityItems.length !== 0 ? (
