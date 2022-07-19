@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { TabBar } from "antd-mobile";
 import {
   UserSetOutline,
@@ -11,7 +11,6 @@ import {
 
 import "./index.css";
 function WebAppFooter() {
-  const navigate = useNavigate();
   const items = [
     { key: "/home", title: "首页", icon: <GlobalOutline /> },
     { key: "/city", title: "城市", icon: <LocationOutline /> },
@@ -19,12 +18,25 @@ function WebAppFooter() {
     { key: "collect", title: "收藏", icon: <HeartOutline /> },
     { key: "/user", title: "我的", icon: <UserSetOutline /> },
   ];
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const [activeKey, setActiveKey] = useState("");
+  useEffect(() => {
+    setActiveKey(
+      pathname === "/"
+        ? "/home"
+        : items.some((e) => pathname.includes(e.key))
+        ? pathname
+        : null
+    );
+  }, [pathname]);
+
   const handleChange = (value) => {
     return navigate(value);
   };
   return (
     <div className="webApp-Footer">
-      <TabBar onChange={handleChange}>
+      <TabBar onChange={handleChange} activeKey={activeKey}>
         {items.map((e) => (
           <TabBar.Item key={e.key} title={e.title} icon={e.icon}></TabBar.Item>
         ))}

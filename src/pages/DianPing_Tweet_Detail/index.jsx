@@ -90,7 +90,7 @@ function DianPingTweetDetail() {
           <span>{tweetItem.Likes.length}人赞</span>
         </Space>
         {/* 推文评论组件 */}
-        <TweetDetailCommmends comments={tweetItem.comments} />
+        <TweetDetailCommmends tweetID={tweetItem.id} />
       </div>
     </>
   ) : (

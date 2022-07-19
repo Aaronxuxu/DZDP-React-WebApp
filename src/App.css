@@ -1,5 +1,6 @@
 .route-spinloading {
-  position: relative;
+  position: absolute;
+  /* height: 100vh; */
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -7,6 +8,12 @@
 .demo-App {
   height: 100%;
 }
-.demo-Body {
+/* 页面初始化高度 */
+.init-body {
   padding-bottom: 49px;
+  min-height: calc(100% - 99px);
+}
+/* antd列表css修改 */
+.adm-list-item-content-main {
+  border-bottom: 1px solid #ccc;
 }

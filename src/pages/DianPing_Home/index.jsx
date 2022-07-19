@@ -4,7 +4,7 @@ import HomeRecommend from "./Home_Recommend";
 import "./index.css";
 function DianPingHome() {
   return (
-    <div className="webApp-Home">
+    <div className="init-body webApp-Home">
       <HomeNav />
       <HomeRecommend />
     </div>

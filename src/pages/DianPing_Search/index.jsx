@@ -9,11 +9,9 @@ import {
   Space,
   Rate,
   Tag,
-  Button,
   InfiniteScroll,
-  Ellipsis,
 } from "antd-mobile";
-import { ReceiptOutline, SmileOutline } from "antd-mobile-icons";
+import { ReceiptOutline, SmileOutline, FrownOutline } from "antd-mobile-icons";
 import "./index.css";
 function DianPingSearch() {
   const { state } = useLocation();
@@ -24,21 +22,30 @@ function DianPingSearch() {
     bol: true,
     loadingArr: [0, 1, 2, 3, 4],
   });
+  const [getCount, setGetCount] = useState(0);
+
   // 无限加载
   const [hasMore, setHasMore] = useState(true);
 
   // axios请求
   const getLists = async () => {
-    const { status, msg, result } = await getCatetoryList(state);
+    const { status, msg, result } = await getCatetoryList({
+      ...state,
+      getCount,
+    });
     if (status !== 0) {
+      setHasMore(false);
       return Toast.show({
         content: msg,
         position: "top",
       });
     }
-    console.log(result);
+    setGetCount((val) => val + 1);
+    setHasMore(result.length > 0);
+    if (result.length > 0) {
+      setListItems([...listItems, ...result]);
+    }
     setIsLoading({ bol: false });
-    setListItems(result);
   };
   useEffect(() => {
     getLists();
@@ -54,46 +61,49 @@ function DianPingSearch() {
           "--border-inner": "none",
           "--prefix-width": "3.3rem",
         }}
-        className="DianPing-Search"
+        className="init-body DianPing-Search"
       >
-        {isLoading.bol
-          ? isLoading.loadingArr.map((e, i) => (
-              <List.Item
-                key={i}
-                prefix={
-                  <Skeleton.Title
-                    animated
-                    style={{ "--width": "100%", "--height": "3.3rem" }}
-                  />
-                }
-                title={
-                  <Skeleton.Title
-                    style={{ "--width": "100%", "--height": "1rem" }}
-                    animated
-                  />
-                }
-                children={
-                  <Skeleton.Title
-                    style={{ "--width": "100%", "--height": "1.5rem" }}
-                    animated
-                  />
-                }
-                description={
-                  <Skeleton.Title
-                    style={{ "--width": "100%", "--height": "2rem" }}
-                    animated
-                  />
-                }
-              />
-            ))
-          : listItems.map((e) => (
+        {isLoading.bol ? (
+          isLoading.loadingArr.map((e, i) => (
+            <List.Item
+              key={i}
+              prefix={
+                <Skeleton.Title
+                  animated
+                  style={{ "--width": "100%", "--height": "3.3rem" }}
+                />
+              }
+              title={
+                <Skeleton.Title
+                  style={{ "--width": "100%", "--height": "1rem" }}
+                  animated
+                />
+              }
+              children={
+                <Skeleton.Title
+                  style={{ "--width": "100%", "--height": "1.5rem" }}
+                  animated
+                />
+              }
+              description={
+                <Skeleton.Title
+                  style={{ "--width": "100%", "--height": "2rem" }}
+                  animated
+                />
+              }
+            />
+          ))
+        ) : (
+          <>
+            {listItems.map((e) => (
               <List.Item
                 key={e.id}
                 prefix={
                   <Image
                     placeholder={
-                      <Skeleton animated style={{ "--width": "100%" }} />
+                      <Skeleton animated style={{ "--height": "3.3rem" }} />
                     }
+                    fallback={<FrownOutline fontSize="3.3rem" />}
                     src={e.storeAvatar}
                     lazy={true}
                   />
@@ -175,6 +185,13 @@ function DianPingSearch() {
                 </Space>
               </List.Item>
             ))}
+            <InfiniteScroll
+              hasMore={hasMore}
+              loadMore={getLists}
+              threshold="100"
+            ></InfiniteScroll>
+          </>
+        )}
       </List>
     </>
   );

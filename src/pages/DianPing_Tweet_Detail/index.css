@@ -9,7 +9,7 @@
   user-select: none;
 }
 .tweet-body {
-  padding: 0.8rem 1rem;
+  padding: 1rem 0.8rem 49px 0.8rem;
   background-color: #fff;
 }
 .tweet-content {
