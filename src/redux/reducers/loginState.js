@@ -1,4 +1,4 @@
-const init = "";
+const init = {};
 function loginState(prev = init, action) {
   const { type, data } = action;
   if (type === "Change") {

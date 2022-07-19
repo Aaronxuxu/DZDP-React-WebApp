@@ -1,3 +1,6 @@
 .tweet-commends {
   margin: 1rem 0;
 }
+.tweet-commends-addCom .adm-list-item-content-main {
+  border-bottom: none;
+}

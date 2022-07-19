@@ -1,0 +1,10 @@
+.DianPing-User {
+  background-image: linear-gradient(rgb(255, 102, 51), white, white);
+  padding: 1rem 0.5rem;
+}
+.DianPing-User .adm-list-item-content-main {
+  border: none;
+}
+.user-base {
+  margin-top: 1rem;
+}

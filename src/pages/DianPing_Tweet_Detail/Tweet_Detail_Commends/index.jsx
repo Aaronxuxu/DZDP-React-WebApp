@@ -1,19 +1,56 @@
-import React from "react";
-import { List, Avatar, SearchBar, Space, Button } from "antd-mobile";
+import React, { useEffect, useState } from "react";
+import { getTweetCommends } from "../../../api/axios";
+import {
+  List,
+  Avatar,
+  SearchBar,
+  Space,
+  Button,
+  Toast,
+  InfiniteScroll,
+} from "antd-mobile";
 import { HeartOutline } from "antd-mobile-icons";
 import "./index.css";
+
 function TweetDetailCommmends(props) {
-  const { comments } = props;
+  const { tweetID } = props;
+  const [itemLists, setItemLists] = useState([]);
+
+  const [getCount, setGetCount] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+
+  const getCommends = async () => {
+    const { result, msg, status } = await getTweetCommends({
+      tweetID,
+      getCount,
+    });
+    if (status !== 0) {
+      setHasMore(false);
+      return Toast.show({
+        content: msg,
+        position: "top",
+      });
+    }
+    // 上线删除
+    setGetCount((val) => val + 1);
+    if (result && result.length > 0) {
+      setItemLists((val) => [...val, ...result]);
+    }
+    setHasMore(result.length > 0);
+  };
+
   return (
     <List
       className="tweet-commends"
       style={{
         "--border-bottom": "none",
         "--border-top": "none",
+        "--border-inner": "none",
         "--font-size": "0.65rem",
       }}
     >
       <List.Item
+        className="tweet-commends-addCom"
         prefix={
           <Avatar style={{ "--border-radius": "50%", "--size": "1.8rem" }} />
         }
@@ -25,7 +62,7 @@ function TweetDetailCommmends(props) {
         ></SearchBar>
       </List.Item>
 
-      {comments.map((e) => (
+      {itemLists.map((e) => (
         <List.Item
           key={e.id}
           prefix={
@@ -58,6 +95,7 @@ function TweetDetailCommmends(props) {
           {e.content}
         </List.Item>
       ))}
+      <InfiniteScroll loadMore={getCommends} hasMore={hasMore} threshold="50" />
     </List>
   );
 }
