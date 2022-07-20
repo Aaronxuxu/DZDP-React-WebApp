@@ -4,8 +4,9 @@ import { NavBar, SearchBar } from "antd-mobile";
 import { DownOutline, UserOutline } from "antd-mobile-icons";
 import { connect } from "react-redux";
 import RouteLists from "../../config/webAppRouter";
-
+import "./index.css";
 function WebAppHeader(props) {
+  const { targetCity, loginState } = props;
   const [isHome, setIsHome] = useState(false);
   const [title, setTitle] = useState("");
   const navigate = useNavigate();
@@ -21,13 +22,17 @@ function WebAppHeader(props) {
       setIsHome(false);
     }
   }, [pathname]);
+  // 跳转登录页/用户页
+  const handleUser = () =>
+    loginState && loginState.id ? navigate("/user") : navigate("/login");
 
   return (
     <NavBar
+      className="webApp-Header"
       backArrow={
         isHome ? (
           <div style={{ fontSize: "0.8rem" }}>
-            {props.targetCity}
+            {targetCity}
             <DownOutline />
           </div>
         ) : (
@@ -37,17 +42,21 @@ function WebAppHeader(props) {
       onBack={() =>
         isHome ? navigate("/city") : navigate(-1, { replace: true })
       }
-      right={isHome && <UserOutline style={{ fontSize: "1.2rem" }} />}
+      right={
+        isHome && (
+          <UserOutline onClick={handleUser} style={{ fontSize: "1.2rem" }} />
+        )
+      }
       style={{
         "--height": "50px",
-        backgroundColor: "#ff6633",
-        color: "#fff",
+        backgroundColor: "#fff",
+        color: "black",
       }}
     >
       {isHome ? (
         <SearchBar
           placeholder="请输入内容"
-          style={{ "--background": "#ffffff", "--border-radius": "100px" }}
+          style={{ "--border-radius": "100px" }}
         />
       ) : (
         title
@@ -56,6 +65,6 @@ function WebAppHeader(props) {
   );
 }
 export default connect(
-  (state) => ({ targetCity: state.targetCity }),
+  (state) => ({ targetCity: state.targetCity, loginState: state.loginState }),
   {}
 )(WebAppHeader);

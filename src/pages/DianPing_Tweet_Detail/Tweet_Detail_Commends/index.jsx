@@ -41,7 +41,7 @@ function TweetDetailCommmends(props) {
 
   return (
     <List
-      className="tweet-commends"
+      className="tweet-commends web-special"
       style={{
         "--border-bottom": "none",
         "--border-top": "none",

@@ -16,7 +16,6 @@ const collArr = [
 ];
 function DianPingUser(props) {
   const { loginState } = props;
-  console.log(props, loginState && loginState.userID);
   return (
     <div className="init-body DianPing-User">
       <List
@@ -25,10 +24,11 @@ function DianPingUser(props) {
           "--border-inner": "none",
           "--border-bottom": "none",
           "--adm-color-background": "transparent",
+          "--active-background-color": "transparent",
           color: "#fff",
         }}
       >
-        {loginState && loginState.userID ? (
+        {loginState && loginState.id ? (
           <LoginList userInfo={loginState} />
         ) : (
           <UnLoginList />

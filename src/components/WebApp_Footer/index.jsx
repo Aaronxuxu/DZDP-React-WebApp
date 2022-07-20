@@ -14,8 +14,8 @@ function WebAppFooter() {
   const items = [
     { key: "/home", title: "首页", icon: <GlobalOutline /> },
     { key: "/city", title: "城市", icon: <LocationOutline /> },
-    { key: "addTweet", icon: <AddOutline /> },
-    { key: "collect", title: "收藏", icon: <HeartOutline /> },
+    { key: "/add_tweet", icon: <AddOutline /> },
+    { key: "/user_collect", title: "收藏", icon: <HeartOutline /> },
     { key: "/user", title: "我的", icon: <UserSetOutline /> },
   ];
   const navigate = useNavigate();

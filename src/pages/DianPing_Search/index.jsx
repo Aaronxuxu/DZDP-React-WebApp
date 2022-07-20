@@ -61,7 +61,7 @@ function DianPingSearch() {
           "--border-inner": "none",
           "--prefix-width": "3.3rem",
         }}
-        className="init-body DianPing-Search"
+        className="init-body DianPing-Search web-special"
       >
         {isLoading.bol ? (
           isLoading.loadingArr.map((e, i) => (
