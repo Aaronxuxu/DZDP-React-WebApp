@@ -35,5 +35,19 @@ const RouteLists = [
     path: "*",
     element: lazy(() => import("../pages/DianPing_404")),
   },
+  {
+    routeName: "发笔记",
+    path: "add_tweet/",
+    element: lazy(() => import("../pages/DianPing_AddTweet")),
+  },
+  {
+    routeName: "收藏",
+    path: "user_collect/",
+    element: lazy(() => import("../pages/DianPing_Collect")),
+  },
+  {
+    path: "login/",
+    element: lazy(() => import("../pages/DianPing_Login")),
+  },
 ];
 export default RouteLists;

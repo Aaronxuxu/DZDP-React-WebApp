@@ -13,7 +13,7 @@
   padding-bottom: 49px;
   min-height: calc(100% - 99px);
 }
-/* antd列表css修改 */
-.adm-list-item-content-main {
+/* antd特殊列表css修改 */
+.web-special .adm-list-item-content-main {
   border-bottom: 1px solid #ccc;
 }

@@ -5,3 +5,5 @@ export const getCatetoryList = (target) =>
   ajax("/api/manage/category/list", target, "get");
 export const getTweetCommends = (obj) =>
   ajax("/api/manage/tweet/commends", obj, "get");
+export const login = (obj) =>
+  ajax("/api/user/login", { userInfo: obj }, "post");
