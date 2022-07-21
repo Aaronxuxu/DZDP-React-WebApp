@@ -1,3 +1,4 @@
+import { LOGIN, LOGOUT } from "../../config/constant";
 import { setCookie, removeCookie } from "../../config/cookies";
 import { login } from "../../api/axios";
 import { Toast } from "antd-mobile";
@@ -11,8 +12,17 @@ export const setLogin = (data) => {
     setCookie("userInfo", result);
     Toast.show({
       content: "登录成功",
+      position: "top",
     });
-    return dispatch({ type: "LOGIN", data: result });
+    return dispatch({ type: LOGIN, data: result });
   };
 };
 // 登出
+export const setLogout = () => {
+  removeCookie("userInfo");
+  Toast.show({ content: "退出成功", position: "top" });
+  return {
+    type: LOGOUT,
+    data: {},
+  };
+};

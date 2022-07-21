@@ -2,6 +2,11 @@
   background-color: #fff;
   padding: 0 1rem 49px;
 }
+.webApp-Login .login-header {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
 .login-form {
+  margin-top: 5rem;
   /* width: 80%; */
 }

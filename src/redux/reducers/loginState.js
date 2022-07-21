@@ -1,11 +1,12 @@
 import { getCookie } from "../../config/cookies";
+import { LOGIN, LOGOUT } from "../../config/constant";
 const init = getCookie("userInfo");
 function loginState(prev = init, action) {
   const { type, data } = action;
   switch (type) {
-    case "LOGIN":
+    case LOGIN:
       return data;
-    case "LOGOUT":
+    case LOGOUT:
       return {};
     default:
       return prev;
