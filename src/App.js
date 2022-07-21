@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { SpinLoading } from "antd-mobile";
 import WebAppHeader from "./components/WebApp_Header";
 import WebAppFooter from "./components/WebApp_Footer";
@@ -9,9 +9,10 @@ import "./App.css";
 const DianPingHome = lazy(() => import("./pages/DianPing_Home"));
 
 function App() {
+  const { pathname } = useLocation();
   return (
     <div className="demo-App">
-      <WebAppHeader />
+      {pathname !== "/user" && <WebAppHeader />}
       <Suspense
         fallback={
           <SpinLoading

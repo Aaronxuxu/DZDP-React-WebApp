@@ -7,6 +7,7 @@ import { List, Collapse, Button } from "antd-mobile";
 import UserEvaluate from "./User_Collapse/User_Evaluate";
 import UserCollect from "./User_Collapse/User_Collect";
 import UserLikes from "./User_Collapse/User_Likes";
+import { setLogout } from "../../redux/actions/logintState";
 
 import "./index.css";
 const collArr = [
@@ -15,9 +16,9 @@ const collArr = [
   { id: "UserLikes", element: <UserLikes />, title: "点赞" },
 ];
 function DianPingUser(props) {
-  const { loginState } = props;
+  const { loginState, setLogout } = props;
   return (
-    <div className="init-body DianPing-User">
+    <div className="DianPing-User">
       <List
         style={{
           "--border-top": "none",
@@ -39,7 +40,7 @@ function DianPingUser(props) {
           {collArr.map((e) => (
             <Collapse.Panel
               key={e.id}
-              disabled={!(loginState && loginState.userID)}
+              disabled={!(loginState && loginState.id)}
               title={e.title}
             >
               {e.element}
@@ -47,9 +48,13 @@ function DianPingUser(props) {
           ))}
         </Collapse>
       </div>
-      {loginState && loginState.userID ? (
+      {loginState && loginState.id ? (
         <div className="user-base user-Logout">
-          <Button style={{ "--border-radius": "20px" }} block>
+          <Button
+            style={{ "--border-radius": "20px" }}
+            block
+            onClick={() => setLogout()}
+          >
             退出登录
           </Button>
         </div>
@@ -61,5 +66,5 @@ export default connect(
   (state) => ({
     loginState: state.loginState,
   }),
-  {}
+  { setLogout }
 )(DianPingUser);

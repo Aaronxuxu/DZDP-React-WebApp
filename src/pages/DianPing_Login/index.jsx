@@ -1,7 +1,7 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { Form, Input, Radio, Button, Toast } from "antd-mobile";
+import { Form, Input, Radio, Button } from "antd-mobile";
 import LoginPhone from "./Login_Phone";
 import { setLogin } from "../../redux/actions/logintState";
 import "./index.css";
@@ -20,6 +20,7 @@ function DianPinglogin(props) {
     <Navigate to="/user" />
   ) : (
     <div className="init-body webApp-Login">
+      <div className="login-header">手机号快捷登录</div>
       <Form
         onFinish={handleLogin}
         className="login-form"
@@ -52,7 +53,7 @@ function DianPinglogin(props) {
           <Input placeholder="请输入手机号码" />
         </Form.Item>
         <Form.Item
-          style={{ "--padding-left": "0" }}
+          style={{ "--padding-left": "0", "--prefix-width": "auto" }}
           label="验证码"
           name="checkCode"
           rules={[{ required: true }]}
@@ -62,7 +63,7 @@ function DianPinglogin(props) {
         <Form.Item
           style={{ "--padding-left": "0" }}
           name="isSure"
-          rules={[{ required: true }]}
+          rules={[{ required: true, message: "请阅读条项并同意" }]}
         >
           <Radio
             style={{
