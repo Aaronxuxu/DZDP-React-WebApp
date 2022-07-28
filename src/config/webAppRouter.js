@@ -16,7 +16,7 @@ const RouteLists = [
     element: lazy(() => import("../pages/DianPing_Search")),
   },
   {
-    routeName: "我的",
+    routeName: "用户中心",
     path: "user/",
     element: lazy(() => import("../pages/DianPing_User")),
   },
@@ -41,9 +41,24 @@ const RouteLists = [
     element: lazy(() => import("../pages/DianPing_AddTweet")),
   },
   {
-    routeName: "收藏",
-    path: "user_collect/",
-    element: lazy(() => import("../pages/DianPing_Collect")),
+    routeName: "收藏/评价/点赞",
+    path: "my/",
+    element: lazy(() => import("../pages/DianPing_My")),
+    children: [
+      { path: "", element: lazy(() => import("../pages/DianPing_My/My_Col")) },
+      {
+        path: "eva/",
+        element: lazy(() => import("../pages/DianPing_My/My_Eva")),
+      },
+      {
+        path: "likes/",
+        element: lazy(() => import("../pages/DianPing_My/My_Likes")),
+      },
+      {
+        path: "col/",
+        element: lazy(() => import("../pages/DianPing_My/My_Col")),
+      },
+    ],
   },
   {
     path: "login/",

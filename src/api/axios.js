@@ -20,9 +20,11 @@ export const getCatetoryList = (target) =>
 // 获取登录用户评价
 export const getLoginUserCom = (id) =>
   ajax("/api/manage/user/com", { id }, "get");
+
 // 获取登录用户收藏
-export const getLoginUserCol = (id) =>
-  ajax("/api/manage/user/col", { id }, "get");
+export const getLoginUserCol = (obj) =>
+  ajax("/api/manage/user/col", obj, "get");
+
 // 获取登录用户点赞
 export const getLoginUserLikes = (id) =>
   ajax("/api/manage/user/likes", { id }, "get");

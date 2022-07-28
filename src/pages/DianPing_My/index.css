@@ -1,0 +1,120 @@
+.navLink {
+  display: block;
+  position: relative;
+  line-height: 45px;
+}
+.navLink::after,
+.navLink::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  bottom: 0;
+  height: 1px;
+  background-color: black;
+  transition: width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.navLink::after {
+  left: 50%;
+}
+.navLink::before {
+  right: 50%;
+}
+.navLink-Active::after,
+.navLink-Active::before {
+  width: 50%;
+}
+.webApp-my {
+  position: relative;
+}
+.webApp-my .my-outlet {
+  padding: 0.5rem;
+}
+.webApp-my .my-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.webApp-my .my-item-list {
+  display: flex;
+  position: relative;
+  padding: 0.5rem;
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+.webApp-my .my-item-list .item-list-image {
+  width: 4rem;
+  height: 4rem;
+  margin-right: 8px;
+}
+
+.webApp-my .my-item-list .item-list-icon {
+  position: absolute;
+  left: -0.3rem;
+  top: 0;
+  padding: 3px 7px;
+  border-radius: 6px 0 0 0;
+  background-color: #fcd499;
+  text-align: right;
+  font-size: 12px;
+}
+
+.webApp-my .my-item-list .item-list-icon::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.3rem;
+  border: 0.15rem solid #f5c47d;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+.webApp-my .my-item-list .item-list-main {
+  width: calc(100% - 4rem - 8px);
+}
+
+.webApp-my .my-item-list .item-list-main .item-list-main-title {
+  line-height: 1rem;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.webApp-my .my-item-list .item-list-main .item-list-main-local {
+  display: flex;
+  width: 100%;
+  font-size: 0.7rem;
+  color: #999;
+}
+.webApp-my .my-item-list .item-list-main .item-list-main-local .local-content {
+  display: flex;
+  width: 80%;
+  align-items: center;
+  margin-right: 8px;
+}
+.webApp-my .my-item-list .item-list-main .item-list-main-local .local-gap {
+  width: 15%;
+}
+.webApp-my
+  .my-item-list
+  .item-list-main
+  .item-list-main-local
+  .local-content
+  .content-icon {
+  margin-right: 3px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.webApp-my
+  .my-item-list
+  .item-list-main
+  .item-list-main-local
+  .local-content
+  .content-posit {
+  width: 75%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

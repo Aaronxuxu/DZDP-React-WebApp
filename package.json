@@ -50,6 +50,7 @@
   "devDependencies": {
     "koa": "^2.13.4",
     "koa-body": "^5.0.0",
-    "koa-router": "^11.0.1"
+    "koa-router": "^11.0.1",
+    "query-string": "^7.1.1"
   }
 }

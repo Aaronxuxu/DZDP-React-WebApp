@@ -12,7 +12,9 @@ function App() {
   const { pathname } = useLocation();
   return (
     <div className="demo-App">
-      {pathname !== "/user" && <WebAppHeader />}
+      {pathname === "/user" || pathname.includes("/my") ? null : (
+        <WebAppHeader />
+      )}
       <Suspense
         fallback={
           <SpinLoading
@@ -27,7 +29,17 @@ function App() {
         <Routes>
           <Route index element={<DianPingHome />}></Route>
           {RouteLists.map((e, i) => (
-            <Route key={i} element={<e.element />} path={e.path}></Route>
+            <Route key={e.path} element={<e.element />} path={e.path}>
+              {e.children &&
+                e.children.length > 0 &&
+                e.children.map((el) => (
+                  <Route
+                    key={el.path}
+                    element={<el.element />}
+                    path={el.path}
+                  ></Route>
+                ))}
+            </Route>
           ))}
         </Routes>
       </Suspense>
