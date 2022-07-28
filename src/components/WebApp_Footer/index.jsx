@@ -15,8 +15,8 @@ function WebAppFooter() {
     { key: "/home", title: "首页", icon: <GlobalOutline /> },
     { key: "/city", title: "城市", icon: <LocationOutline /> },
     { key: "/add_tweet", icon: <AddOutline /> },
-    { key: "/user_collect", title: "收藏", icon: <HeartOutline /> },
-    { key: "/user", title: "我的", icon: <UserSetOutline /> },
+    { key: "/my", title: "用户相关", icon: <HeartOutline /> },
+    { key: "/user", title: "用户中心", icon: <UserSetOutline /> },
   ];
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -26,12 +26,15 @@ function WebAppFooter() {
       pathname === "/"
         ? "/home"
         : items.some((e) => pathname.includes(e.key))
-        ? pathname
+        ? items.find((e) => pathname.includes(e.key)).key
         : null
     );
   }, [pathname]);
 
   const handleChange = (value) => {
+    if (value === "/my") {
+      return navigate("/my/col?optType=All");
+    }
     return navigate(value);
   };
   return (

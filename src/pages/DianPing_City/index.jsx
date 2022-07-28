@@ -9,8 +9,7 @@ import {
   Grid,
   AutoCenter,
 } from "antd-mobile";
-// 组件
-import WebAppHeader from "../../components/WebApp_Header";
+
 // jsonp/axios
 import apiJsonp from "../../api/jsonp";
 import { APIKEY } from "../../config/constant";

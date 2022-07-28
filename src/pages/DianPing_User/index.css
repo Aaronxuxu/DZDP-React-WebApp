@@ -9,3 +9,10 @@
 .user-base {
   margin-top: 1rem;
 }
+.DianPing-User .user-colList {
+  padding: 1rem 0.5rem;
+  background-color: #fafafa;
+}
+.DianPing-User .user-colList .card-list-item .adm-list-item-content-main {
+  padding-top: 0;
+}
