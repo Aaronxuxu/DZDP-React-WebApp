@@ -89,11 +89,14 @@ function MyCol(props) {
               )}
               <div className="item-list-main-title">{e.dataName}</div>
               {e.classify === "Goods" && (
-                <Space align="center" style={{ fontSize: "0.7rem" }}>
+                <Space
+                  align="center"
+                  style={{ fontSize: "0.5rem", width: "100%" }}
+                >
                   <Rate
                     value={e.Rate}
                     readOnly={true}
-                    style={{ "--star-size": "0.6rem" }}
+                    style={{ "--star-size": "0.5rem" }}
                   />
                   <span>{e.Rate}分</span>
                   <span>{e.Commends}条</span>

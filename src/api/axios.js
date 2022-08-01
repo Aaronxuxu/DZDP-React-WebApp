@@ -13,6 +13,9 @@ export const getHomeTweet = (obj) => ajax("/api/manage/tweet/list", obj, "get");
 export const getTweetCommends = (obj) =>
   ajax("/api/manage/tweet/commends", obj, "get");
 
+// 添加推文
+export const addTweet = (val) => ajax("/api/manage/tweet/add", val, "post");
+
 // 获取分类详细商品
 export const getCatetoryList = (target) =>
   ajax("/api/manage/category/list", target, "get");

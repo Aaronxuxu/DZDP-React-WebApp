@@ -43,7 +43,7 @@ function App() {
           ))}
         </Routes>
       </Suspense>
-      <WebAppFooter />
+      {pathname !== "/add_tweet" && <WebAppFooter />}
     </div>
   );
 }

@@ -1,0 +1,34 @@
+.webApp-addTweet .adm-list-body {
+  background-color: unset;
+}
+.webApp-addTweet .addTweet-TextArea {
+  /* padding: 10px 0; */
+}
+.webApp-addTweet .tweetTitle .adm-text-area-count {
+  padding-top: 0;
+  font-size: 12px;
+}
+.tweetMain .adm-list-item-content-main {
+  border-top: 1px solid #eee;
+}
+.webApp-addTweet .addTweet-Picker {
+  margin-top: 15px;
+}
+.webApp-addTweet .adm-form-footer {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 55px;
+  bottom: 0;
+  padding: 5px 0;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+}
+.webApp-addTweet .adm-form-footer .addTweet-saveBtn {
+  width: 25%;
+}
+.webApp-addTweet .adm-form-footer .addTweet-submitBtn {
+  width: 70%;
+  border: none;
+}
